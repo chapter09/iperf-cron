@@ -1,0 +1,10 @@
+# cluster
+hosts:
+  - hao-ml-0
+
+# iperf
+server_port: 10086
+parallel_stream_num: 5
+time: 10
+
+
