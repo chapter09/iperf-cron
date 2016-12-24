@@ -1,0 +1,6 @@
+---
+# Install iperf2
+
+- name: Install iperf
+  apt: name=iperf state=present
+  become: true

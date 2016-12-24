@@ -1,0 +1,19 @@
+---
+# Run iperf cron jobs
+
+- name: Install iperf
+  inlcude: install_iperf.yml
+
+- name: Create cron directory if not exists
+  file: path=/home/{{ user }}/cronjob state=directory 
+        onwer={{ user }} group={{ user }}
+
+- name: Copy iperf.py to remote workers
+  copy: src=iperf.py dest=/home/{{ user }}/cronjob 
+        onwer={{ user }} group={{ user }} mode=744
+
+- name: Register to iperf.py as an hourly cron job
+  cron: 
+    - name: "iperf"
+    - job: /home/{{ user }}/cronjob/iperf.py
+    - minute: 0
