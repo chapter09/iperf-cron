@@ -1,1 +1,11 @@
+# OS config
 user: ubuntu
+
+# iperf processes config
+async: False
+
+# iperf config
+iperf_port: 10086
+iperf_time: 10			# second
+
+
