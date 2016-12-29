@@ -1,26 +1,24 @@
 ---
 # Run iperf cron jobs
 
-- name: Install iperf
-  inlcude: install_iperf.yml
+#- name: Install iperf
+#  inlcude: install_iperf.yml
 
 - name: Create cron directory if not exists
   file: path=/home/{{ user }}/cronjob state=directory 
-        onwer={{ user }} group={{ user }}
+        owner={{ user }} group={{ user }}
 
 - name: Copy iperf.py to remote workers
-  copy: src=iperf.py dest=/home/{{ user }}/cronjob 
-        onwer={{ user }} group={{ user }} mode=74
+  copy: src=iperf.py dest=/home/{{ user }}/cronjob/ 
+        owner={{ user }} group={{ user }} mode=744
 
 - name: Copy config file iperf.yml to remote workers
   template: src=iperf.j2 dest=/home/{{ user }}/cronjob/iperf.yml
 
+#- name: Start iperf server on each server
+#- name: Register to iperf.py as an hourly cron job
+#  cron: 
+#    - name: "iperf"
+#    - job: /home/{{ user }}/cronjob/iperf.py
+#    - minute: 0
 
-- name: Start iperf server on each server
-  
-
-- name: Register to iperf.py as an hourly cron job
-  cron: 
-    - name: "iperf"
-    - job: /home/{{ user }}/cronjob/iperf.py
-    - minute: 0

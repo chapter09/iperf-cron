@@ -1,10 +1,10 @@
 ---
-# Install iperf2
-
+# Install iperf2 dependencies
 - name: Install iperf
   apt: name=iperf state=present
   become: true
 
-- name: Install yaml for python
+- name: Install PyYaml for python
   pip: name=pyyaml
   become: true
+
