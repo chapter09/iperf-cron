@@ -1,0 +1,7 @@
+---
+# This Playbook will collect cron jobs across this cluster
+
+- hosts: master
+  remote_user: "{{ user }}"
+  roles:
+    - role: 

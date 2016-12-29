@@ -1,0 +1,9 @@
+hosts:
+{% for host in hosts|reject(inventory_hostname) %}
+	- {{ host }}
+{% endfor %}
+
+async: {{ async }}
+
+iperf_port: {{ iperf_port }}
+iperf_time: {{ iperf_time }}
