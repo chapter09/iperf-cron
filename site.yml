@@ -1,7 +1,7 @@
 ---
 # This Playbook will deploy cron jobs across this cluster
 
-- hosts: master
+- hosts: master 
   remote_user: "{{ user }}"
   roles:
     - role: iperf

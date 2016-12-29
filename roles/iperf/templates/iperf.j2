@@ -1,6 +1,8 @@
 hosts:
-{% for host in hosts|reject(inventory_hostname) %}
-	- {{ host }}
+{% for host in hosts %}
+{% if host != inventory_hostname %}
+  - {{ host }}
+{% endif %}
 {% endfor %}
 
 async: {{ async }}
