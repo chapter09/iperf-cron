@@ -14,10 +14,10 @@
 
 - name: Copy config file iperf.yml to remote workers
   template: src=iperf.j2 dest=/home/{{ user }}/cronjob/iperf.yml
-        
 
-- name: Deploy the list of remote hosts
-  template: 
+
+- name: Start iperf server on each server
+  
 
 - name: Register to iperf.py as an hourly cron job
   cron: 

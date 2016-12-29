@@ -1,5 +1,11 @@
-# OS config
+# cluster config
 user: ubuntu
+hosts:
+	- 10.2.3.4  	  	#hao-ml-3
+	- 10.8.3.3      	#hao-ml-0
+	- 10.6.3.3      	#hao-ml-4
+	- 10.12.3.32    	#hao-ml-1
+	- 129.97.119.138	#hao-ml-2
 
 # iperf processes config
 async: False
@@ -7,5 +13,6 @@ async: False
 # iperf config
 iperf_port: 10086
 iperf_time: 10			# second
+iperf_connection_num: 5 # number of parallel connections
 
 
