@@ -1,8 +1,8 @@
 ---
 # Run iperf cron jobs
 
-#- name: Install iperf
-#  inlcude: install_iperf.yml
+- name: Install iperf
+  include: install_iperf.yml 
 
 - name: Create cron directory if not exists
   file: path=/home/{{ user }}/cronjob state=directory 
