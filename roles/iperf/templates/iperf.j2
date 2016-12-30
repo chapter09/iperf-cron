@@ -1,11 +1,15 @@
 hosts:
 {% for host in hosts %}
 {% if host != inventory_hostname %}
-  - {{ host }}
+  - {{ host }} 
 {% endif %}
 {% endfor %}
 
 async: {{ async }}
+offset: {% for host in hosts %}
+{% if host == inventory_hostname %}
+{{ loop.index0 }}
+{% endif %}{% endfor %}
 
 iperf_port: {{ iperf_port }}
 iperf_time: {{ iperf_time }}
