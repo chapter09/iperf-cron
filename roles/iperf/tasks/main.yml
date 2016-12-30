@@ -20,7 +20,6 @@
   async: 45
   poll: 0
 
-
 #- name: Register to iperf.py as an hourly cron job
 #  cron: 
 #    - name: "iperf"
