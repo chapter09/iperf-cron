@@ -32,9 +32,11 @@ for host in hosts:
         cfg['iperf_time'],
         cfg['iperf_connection_num'])
     if ASYNC:
+        log_fd.write("\n%s\n"%time.asctime())
         p = subprocess.Popen(cmd, stdout=log_fd, stderr=err_fd, shell=True)
         proc_pool.append(p)
     else:
+        log_fd.write("")
         subprocess.call(cmd, stdout=log_fd, stderr=err_fd, shell=True)
 
 if ASYNC:
