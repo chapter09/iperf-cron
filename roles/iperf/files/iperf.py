@@ -20,11 +20,12 @@ if offset > 0:
     time.sleep(offset * 60 + 60) # avoid iperf client test overlap 
 
 proc_pool = []
-iperf_cmd = "iperf  -c %s -p %d -t %d -P %d" 
+iperf_cmd = "iperf -c %s -p %d -t %d -P %d" 
 
 log_fd = open('./iperf.log', 'a')
 err_fd = open('./iperf.err', 'a')
 
+log_fd.write("\n%s\n"%time.asctime())
 for host in hosts:
     cmd = iperf_cmd % (
         host, 
@@ -33,11 +34,9 @@ for host in hosts:
         cfg['iperf_connection_num'])
     
     if ASYNC:
-        log_fd.write("\n%s\n"%time.asctime())
         p = subprocess.Popen(cmd, stdout=log_fd, stderr=err_fd, shell=True)
         proc_pool.append(p)
     else:
-        log_fd.write("\n%s\n"%time.asctime())
         subprocess.call(cmd, stdout=log_fd, stderr=err_fd, shell=True)
 
 if ASYNC:
