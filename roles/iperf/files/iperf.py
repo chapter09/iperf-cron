@@ -26,6 +26,7 @@ log_fd = open('./iperf.log', 'a')
 err_fd = open('./iperf.err', 'a')
 
 log_fd.write("\n%s\n"%time.asctime())
+log_fd.flush()
 for host in hosts:
     cmd = iperf_cmd % (
         host, 
