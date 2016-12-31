@@ -23,16 +23,16 @@ proc_pool = []
 iperf_cmd = "iperf  -c %s -p %d -t %d -P %d" 
 log_fd = open('./iperf.log', 'a')
 for host in hosts:
-	cmd = iperf_cmd % (
-			host, 
-			cfg['iperf_port'],
-			cfg['iperf_time'],
-			cfg['iperf_connection_num'])
-	if ASYNC:
-		p = subprocess.Popen(cmd, stdout=log_fd, shell=True)
+    cmd = iperf_cmd % (
+        host, 
+        cfg['iperf_port'],
+        cfg['iperf_time'],
+        cfg['iperf_connection_num'])
+    if ASYNC:
+        p = subprocess.Popen(cmd, stdout=log_fd, shell=True)
         proc_pool.append(p)
-	else:
-		subprocess.call(cmd, stdout=log_fd, shell=True)
+    else:
+        subprocess.call(cmd, stdout=log_fd, shell=True)
 
 if ASYNC:
     for proc in proc_pool:
