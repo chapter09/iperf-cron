@@ -6,10 +6,10 @@ import yaml
 import os.path as path
 import time
 
-# EXEC_DIR = path.dirname(path.abspath(__file__))
+EXEC_DIR = path.dirname(path.abspath(__file__))
 
 ## parse config file
-with open('./iperf.yml', 'r') as yml_fd:
+with open(EXEC_DIR+'/iperf.yml', 'r') as yml_fd:
     cfg = yaml.load(yml_fd)
 
 hosts = cfg['hosts']
@@ -22,8 +22,8 @@ if offset > 0:
 proc_pool = []
 iperf_cmd = "iperf -c %s -p %d -t %d -P %d" 
 
-log_fd = open('./iperf.log', 'a')
-err_fd = open('./iperf.err', 'a')
+log_fd = open(EXEC_DIR+'/iperf.log', 'a')
+err_fd = open(EXEC_DIR+'/iperf.err', 'a')
 
 log_fd.write("\n%s\n"%time.asctime())
 log_fd.flush()
