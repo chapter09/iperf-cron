@@ -36,7 +36,7 @@ for host in hosts:
         p = subprocess.Popen(cmd, stdout=log_fd, stderr=err_fd, shell=True)
         proc_pool.append(p)
     else:
-        log_fd.write("")
+        log_fd.write("\n%s\n"%time.asctime())
         subprocess.call(cmd, stdout=log_fd, stderr=err_fd, shell=True)
 
 if ASYNC:
