@@ -25,4 +25,3 @@
   - name: "iperf"
   - job: /home/{{ user }}/cronjob/iperf.py
   - minute: 0
-
