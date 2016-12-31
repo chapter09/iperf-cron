@@ -6,7 +6,7 @@ import yaml
 import os.path as path
 import time
 
-EXEC_DIR = path.dirname(path.abspath(__file__))
+# EXEC_DIR = path.dirname(path.abspath(__file__))
 
 ## parse config file
 with open('./iperf.yml', 'r') as yml_fd:
