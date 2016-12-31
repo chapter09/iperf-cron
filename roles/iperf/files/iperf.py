@@ -4,6 +4,7 @@ import os, sys
 import subprocess
 import yaml
 import os.path as path
+import time
 
 EXEC_DIR = path.dirname(path.abspath(__file__))
 
@@ -13,9 +14,14 @@ with open('./iperf.yml', 'r') as yml_fd:
 
 hosts = cfg['hosts']
 ASYNC = cfg['async']
+offset = cfg['offset']
 
+if offset > 0:
+    time.sleep(offset * 60 + 60) # avoid iperf client test overlap 
+
+proc_pool = []
 iperf_cmd = "iperf  -c %s -p %d -t %d -P %d" 
-
+log_fd = open('./iperf.log', 'a')
 for host in hosts:
 	cmd = iperf_cmd % (
 			host, 
@@ -23,11 +29,13 @@ for host in hosts:
 			cfg['iperf_time'],
 			cfg['iperf_connection_num'])
 	if ASYNC:
-		subprocess.Popen(cmd, shell=True)
+		p = subprocess.Popen(cmd, stdout=log_fd, shell=True)
+        proc_pool.append(p)
 	else:
-		subprocess.call(cmd, shell=True)
-
+		subprocess.call(cmd, stdout=log_fd, shell=True)
 
 if ASYNC:
+    for proc in proc_pool:
+        proc.wait()
 
-
+log_fd.close()
