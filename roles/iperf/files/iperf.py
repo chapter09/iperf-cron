@@ -31,6 +31,7 @@ for host in hosts:
         cfg['iperf_port'],
         cfg['iperf_time'],
         cfg['iperf_connection_num'])
+    
     if ASYNC:
         log_fd.write("\n%s\n"%time.asctime())
         p = subprocess.Popen(cmd, stdout=log_fd, stderr=err_fd, shell=True)
