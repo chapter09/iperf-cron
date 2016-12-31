@@ -22,3 +22,6 @@
 
 - name: Register to iperf.py as an hourly cron job
   cron: name="iperf" job=/home/{{ user }}/cronjob/iperf.py minute=0
+
+# stop iperf server
+# kill -9 `pgrep iperf`
