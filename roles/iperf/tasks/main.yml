@@ -21,8 +21,5 @@
   poll: 0
 
 - name: Register to iperf.py as an hourly cron job
-  cron: 
-  - name: "iperf"
-  - job: /home/{{ user }}/cronjob/iperf.py
-  - minute: 0
+  cron: name="iperf" job=/home/{{ user }}/cronjob/iperf.py minute=0
 
