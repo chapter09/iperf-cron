@@ -9,6 +9,6 @@
   become: true
 
 - name: Install PyYaml for python
-  pip: name=pyyaml executable=pip-3.4
+  pip: name=pyyaml executable=pip3
   become: true
 

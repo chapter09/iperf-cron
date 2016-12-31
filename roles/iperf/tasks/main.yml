@@ -16,7 +16,7 @@
   template: src=iperf.j2 dest=/home/{{ user }}/cronjob/iperf.yml
 
 - name: Start iperf server on each server
-  shell: iperf -s -p {{ iperf_port }}
+  shell: iperf -s -p {{ iperf_port }} -D
   async: 45
   poll: 0
 
