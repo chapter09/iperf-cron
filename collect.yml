@@ -13,5 +13,6 @@
   tasks:
     - name: Collect iperf log file from remote
       fetch: src=/home/{{ user }}/cronjob/iperf.log 
-             dest=./logs/iperf-{{ inventory_hostname }}.log 
-      
+             dest=./logs/iperf-{{ inventory_hostname }}.log
+             flat=yes
+ 
