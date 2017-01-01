@@ -12,6 +12,6 @@
   remote_user: "{{ user }}"
   tasks:
     - name: Collect iperf log file from remote
-    - fetch: src=/home/{{ user }}/cronjob/iperf.log 
+      fetch: src=/home/{{ user }}/cronjob/iperf.log 
              dest=./logs/iperf-{{ inventory_hostname }}.log 
       
