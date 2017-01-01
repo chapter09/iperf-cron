@@ -3,5 +3,15 @@
 
 - hosts: master
   remote_user: "{{ user }}"
-  roles:
-    - role: 
+  tasks:
+    - name: Create log directory
+      file: path=./logs/ state=directory 
+            owner={{ user }} group={{ user }}
+
+- hosts: all
+  remote_user: "{{ user }}"
+  tasks:
+    - name: Collect iperf log file from remote
+    - fetch: src=/home/{{ user }}/cronjob/iperf.log 
+             dest=./logs/iperf-{{ inventory_hostname }}.log 
+      
