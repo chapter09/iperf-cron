@@ -7,7 +7,6 @@ import re
 from datetime import datetime
 from argparse import ArgumentParser
 
-csv_fd = open('eggs.csv', 'w', newline='')
 time_pt = r'\d{2}:\d{2}:\d{2}'
 host_pt = r'Client connecting to\s*(.*), TCP port (\d*)'
 bw_pt = r'\[SUM\]\s*.*MBytes\s*(\d+\.?\d*)\s*Mbits/sec'
@@ -24,7 +23,7 @@ def parse_args():
 def parse(fp):
     record_dict = {}
     hosts = set()
-    with open(fp) as fd:
+    with open(fp, encoding='ISO-8859-1') as fd:
         t = None
         for line in fd.readlines():
             try:
