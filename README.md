@@ -26,5 +26,7 @@ ansible-playbook -i hosts collect.yml
 #### 3. Clean Up
 
 ```bash 
+ansible -i hosts -m shell -a "killall iperf"
+ansible -i hosts -m shell -a "killall iperf.py"
 ansible -i hosts -m shell -a "crontab -r"
 ```
