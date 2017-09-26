@@ -9,7 +9,7 @@ from argparse import ArgumentParser
 
 time_pt = r'\d{2}:\d{2}:\d{2}'
 host_pt = r'Client connecting to\s*(.*), TCP port (\d*)'
-bw_pt = r'\[SUM\]\s*.*MBytes\s*(\d+\.?\d*)\s*Mbits/sec'
+bw_pt = r'\[SUM\]\s*.*[G,M]Bytes\s*(\d+\.?\d*)\s*Mbits/sec'
 
 
 def parse_args():
